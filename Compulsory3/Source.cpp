@@ -11,6 +11,7 @@ std::string	p1Name;
 char p1Token = 'X';
 std::string p2Name;
 char p2Token = 'O';
+int drop{};
 
 std::string AI = "AI";
 bool aiON = false;
@@ -18,6 +19,7 @@ bool aiON = false;
 void drawBoard();
 void startScreen();
 void game();
+void dropToken();
 void checkWin();
 
 
@@ -69,14 +71,106 @@ void drawBoard()
 
 void game()
 {
-	if (aiON = false)
-	{
+	int currentPlayer = 1;
+	std::cout << "Player " << currentPlayer << " please Enter a number from 0 to 7: ";
+	std::cin >> drop;
 
+	bool p1Turn = true;
+
+	if (aiON == false)
+	{
+		switch (drop)
+		{
+		case 1:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][0] == "*")
+				{
+					board[i][0] = p1Token;
+					break;
+				}
+				
+			}
+			break;
+		case 2:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][1] == "*")
+				{
+					board[i][1] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		case 3:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][2] == "*")
+				{
+					board[i][2] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		case 4:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][3] == "*")
+				{
+					board[i][3] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		case 5:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][4] == "*")
+				{
+					board[i][4] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		case 6:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][5] == "*")
+				{
+					board[i][5] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		case 7:
+			for (int i = 6; i >= 0; i--)
+			{
+				if (board[i][6] == "*")
+				{
+					board[i][6] = p1Token;
+					break;
+				}
+
+			}
+			break;
+		default:
+			break;
+		}
 	}
 	else
 	{
 
 	}
+}
+
+void dropToken()
+{
+	
 }
 
 void checkWin()
@@ -86,8 +180,17 @@ void checkWin()
 
 int main()
 {
+	bool gameOver = false;
+
 	startScreen();
-	drawBoard();
+
+	while (gameOver == false)
+	{
+		drawBoard();
+		game();
+		dropToken();
+	}
+	
 
 	return 0;
 }
