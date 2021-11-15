@@ -28,7 +28,7 @@ void player2Turn();
 void aiTurn();
 void save();
 bool checkWin();
-
+bool checkDraw();
 
 std::vector<std::vector<std::string>> board = {
 	{ "*","*","*","*","*","*","*"},
@@ -473,7 +473,7 @@ bool checkWin()
 
 	count = 0;
 
-	for (int i = 0; i < 3; i++) // Credit to Bjørn for this diagonal check.
+	for (int i = 0; i < 3; i++) // Credit to Bjørn for this diagonal check which i modified a little.
 	{
 		// i < 3 because only the 3 first rows can contain a diagonal victory
 		for (int j = 0; j < 7; j++) 
@@ -531,6 +531,19 @@ bool checkWin()
 		}
 	}
 	return false;
+}
+
+bool checkDraw()
+{
+	if (board[0][0] != "*" && board[0][1] != "*" && board[0][2] != "*" && board[0][3] != "*" && board[0][4] != "*" && board[0][5] != "*" && board[0][6] != "*" && board[0][7] != "*")
+	{
+		std::cout << "It's a draw!" << std::endl;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void save() // I couldn't get this to work properly even though i think this should be correct.
@@ -594,6 +607,7 @@ int main()
 	{
 		drawBoard();
 		player1Turn();
+		checkDraw();
 		if (checkWin())
 		{
 			if (currentPlayer == 1)
@@ -637,6 +651,8 @@ int main()
 		{
 			aiTurn();
 		}
+
+		checkDraw();
 
 		if (checkWin())
 		{
